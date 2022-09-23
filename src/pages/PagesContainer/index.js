@@ -41,16 +41,25 @@ export function PagesContainer() {
   // updates pokemon object
   useEffect(() => {
     console.log("Pokemon na pages container", successPokemon)
-    console.log("pokeStats", pokeStats)
-    console.log("typeof", typeof pokeNumberOrName)
     if(successPokemon){
       setPokeImgFront(successPokemon.sprites.front_default);
       setPokeName(toUpperCaseFirstLetter(successPokemon.name));
       setPokeId(successPokemon.id);
       setPokeStats(successPokemon.stats);
-      console.log("pokeStats", pokeStats);
+      setPokeNumberOrName()
     } else handleClearStates()
   }, [successPokemon]);
+
+  // Get next and previous pokemon
+  useEffect(() => {
+    if(Number(pokeId) > 898){
+      setPokeId(1)
+      dispatch(pokemonRequest(1))
+    } else if(Number(pokeId) < 1) {
+      setPokeId(1)
+      dispatch(pokemonRequest(1))
+    }
+  }, [pokeId])
 
   const handler = {
     loadingPokemon: loadingPokemon,
