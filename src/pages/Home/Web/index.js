@@ -13,13 +13,11 @@ import {
 } from "../styles";
 import search from "../../../assets/images/search.png";
 import { toLowerCaseAllLetters } from "../../../utils/masks";
-import { useDispatch } from "react-redux";
-import { pokemonRequest } from "../../../store/modules/pokemon";
 
 export function HomeWeb({ handler }) {
-  const dispatch = useDispatch();
   return (
     <Col>
+      {/* Search Bar */}
       <Row margtop={px2vw(20)}>
         <SearchPokeBar
           type="text"
@@ -42,7 +40,7 @@ export function HomeWeb({ handler }) {
       <Row alignCenter margtop={px2vw(20)} margbottom={px2vw(20)}>
         <BackAndForwardPokemonButtonContainer 
           left
-          onClick={() => dispatch(pokemonRequest(Number(handler.pokeId) - 1))}
+          onClick={() => handler.getPreviousPokemon()}
         >
           <LeftAndRightButton
             src={require('../../../assets/images/less_than.png')}
@@ -52,7 +50,7 @@ export function HomeWeb({ handler }) {
         <PokeCard handler={handler} />
         <BackAndForwardPokemonButtonContainer
           right 
-          onClick={() => dispatch(pokemonRequest(Number(handler.pokeId) + 1))}
+          onClick={() => handler.getNextPokemon()}
         >
           <LeftAndRightButton
             src={require('../../../assets/images/more_than.png')}

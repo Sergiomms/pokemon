@@ -13,6 +13,14 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${(props) => props.isMobile && `
+    width: ${px2vw(1000)};
+    height: ${px2vw(1200)};
+    padding: ${px2vw(30)};
+    border-radius: ${px2vw(40)};
+    border: ${px2vw(30)} solid ${pokeYellow2};
+  `}
 `;
 
 export const PokeName = styled.div`
@@ -21,6 +29,10 @@ export const PokeName = styled.div`
   font-size: ${px2vw(17)};
   text-align: start;
   font-weight: bold;
+
+  ${(props) => props.isMobile && `
+    font-size: ${px2vw(45)};
+  `}
 `;
 
 export const PokeNumber = styled.div`
@@ -36,12 +48,25 @@ export const PokeNumber = styled.div`
     font-weight: bold;
     display: inline-block;
   }
+
+  ${(props) => props.isMobile && `
+    font-size: ${px2vw(35)};
+
+    span {
+      font-size: ${px2vw(45)};
+    }
+  `}
 `;
 
 export const PokeView = styled.div`
   width: ${px2vw(400)};
   height: ${px2vw(225)};
   border: ${px2vw(5)} solid ${pokeGray};
+
+  ${(props) => props.isMobile && `
+    width: ${px2vw(900)};
+    height: ${px2vw(580)};
+  `}
 `;
 
 export const BackgroundImage = styled.div`
@@ -53,12 +78,25 @@ export const BackgroundImage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: start;
+
+  ${(props) => props.isMobile && `
+    width: ${px2vw(895)};
+    height: ${px2vw(575)};
+    background-size: ${px2vw(895)} ${px2vw(575)};
+  `}
 `;
 
 export const PokemonImageContainer = styled.div`
   width: ${px2vw(150)};
   height: ${px2vw(150)};
   margin-left: ${px2vw(30)};
+
+  ${(props) => props.isMobile && `
+    width: ${px2vw(350)};
+    height: ${px2vw(350)};
+    margin-left: ${px2vw(75)};
+    margin-top: ${px2vw(50)};
+  `}
 `;
 
 export const PokemonImage = styled.img`
@@ -74,17 +112,26 @@ export const LoadingBox = styled.div`
   align-items: center;
   margin-left: ${px2vw(80)};
   margin-top: ${px2vw(-40)};
+
+  ${(props) => props.isMobile && `
+    margin-bottom: ${px2vw(70)};
+    margin-left: ${px2vw(150)};
+  `}
 `;
 
 export const StatsName = styled.div`
   font-size: ${px2vw(14)};
   font-weight: bold;
+
+  ${(props) => props.isMobile && `
+    font-size: ${px2vw(35)};
+  `}
 `;
 
 export const StatusBar = styled.div`
   width: 100%;
 
-  .hpStatusClass {
+  /* .hpStatusClass {
     progress: ${(props) => props.progress};
     height: ${px2vw(25)};
     padding: ${px2vw(5)};
@@ -97,7 +144,7 @@ export const StatusBar = styled.div`
     width: calc(var(--progress) * 1%);
     background-color: hsl(calc(progress * 1.2), 80%, 50%);
     transition: all 0.2s ease;
-  }
+  } */
 `;
 
 
