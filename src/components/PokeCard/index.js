@@ -16,7 +16,7 @@ import {
 import Spinner from "../../components/Spinner";
 import { StatusBar } from "../StatusBar";
 
-export function PokeCard({ handler }) {
+export function PokeCard({ handler, isMobile }) {
   const [totalStatsPerLine, setTotalStatsPerLine] = useState([]);
 
   useEffect(() => {
@@ -39,27 +39,31 @@ export function PokeCard({ handler }) {
     }
   }, [handler.pokeStats]);
 
-
   return (
-    <Card>
-      <Row justifyStart spaceBetween height="auto" margbottom={px2vw(10)}>
+    <Card isMobile={isMobile}>
+      <Row
+        justifyStart
+        spaceBetween
+        height="auto"
+        margbottom={isMobile ? px2vw(20) : px2vw(10)}
+      >
         <Col width="auto" height="auto">
-          <PokeName>{handler.pokeName}</PokeName>
+          <PokeName isMobile={isMobile}>{handler.pokeName}</PokeName>
         </Col>
         <Col width="auto" height="auto">
-          <PokeNumber>
+          <PokeNumber isMobile={isMobile}>
             Nº - <span>{handler.pokeId}</span>
           </PokeNumber>
         </Col>
       </Row>
-      <PokeView>
-        <BackgroundImage>
+      <PokeView isMobile={isMobile}>
+        <BackgroundImage isMobile={isMobile}>
           {handler.loadingPokemon ? (
-            <LoadingBox>
+            <LoadingBox isMobile={isMobile}>
               <Spinner />
             </LoadingBox>
           ) : (
-            <PokemonImageContainer>
+            <PokemonImageContainer isMobile={isMobile}>
               <PokemonImage src={handler.pokeImgFront} />
             </PokemonImageContainer>
           )}
@@ -72,18 +76,25 @@ export function PokeCard({ handler }) {
             key={idxGroup}
             justifyCenter
             spaceBetween
-            width={px2vw(400)}
-            margtop={px2vw(15)}
+            width={isMobile ? px2vw(900) : px2vw(400)}
+            margtop={isMobile ? px2vw(40) : px2vw(15)}
             margleft={px2vw(15)}
           >
             {pokeStatus.map((stats, idx) => {
               return (
                 <Col key={idx}>
-                  <Row justifyStart>
-                    <StatsName>{stats.stat.name.toUpperCase()} - {stats.base_stat}</StatsName>
+                  <Row justifyStart height="auto">  
+                    <StatsName isMobile={isMobile}>
+                      {stats.stat.name.toUpperCase()} - {stats.base_stat}
+                    </StatsName>
                   </Row>
-                  <Row justifyStart height={px2vw(25)} width={px2vw(175)}>
-                    <StatusBar statusValue={stats.base_stat}/>
+                  <Row
+                    justifyStart
+                    height={isMobile ? px2vw(25) : px2vw(25)}
+                    width={isMobile ? px2vw(400) : px2vw(175)}
+                    margtop={isMobile ? px2vw(25) : px2vw(5)}
+                  >
+                    <StatusBar statusValue={stats.base_stat} isMobile={isMobile} />
                   </Row>
                 </Col>
               );

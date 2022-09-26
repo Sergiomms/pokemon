@@ -21,6 +21,10 @@ export const Bar = styled.div`
     padding: ${px2vw(3)};
     transition: all 0.2s ease;
   }
+
+  ${(props) => props.isMobile && `
+    height: ${px2vw(30)};
+  `}
 `;
 
 // will serve for future consultations
