@@ -7,7 +7,8 @@ import { home } from "./routeMap";
 export default function Navigation() {
   return (
     <Routes>
-      <Route path={home} element={<Home />} />
+      <Route path="/" element={<Home />} to={home}/>
+      <Route path={home} element={<Home />}/>
       {/* <Route path={teste} element={<Teste />} /> */}
     </Routes>
   );
