@@ -8,14 +8,14 @@ export function HeaderWeb({ handler }) {
 
   return (
     <Row height={px2vw(75)} background={pokeRed3} alignCenter>
-      <Col margleft={px2vw(150)}>
+      <Col alignCenter>
         <PokeLogoContainer>
           <PokeLogo src={require("../../../assets/images/Pokemon-Logo.png")} />
         </PokeLogoContainer>
       </Col>
 
-      <Col onClick={() => handler.handleNavigation("home")} cursor="pointer">Home</Col>
-      <Col onClick={() => handler.handleNavigation("teste")} cursor="pointer">Teste</Col>
+      {/* <Col onClick={() => handler.handleNavigation("home")} cursor="pointer">Home</Col>
+      <Col onClick={() => handler.handleNavigation("teste")} cursor="pointer">Teste</Col> */}
     </Row>
   );
 }
